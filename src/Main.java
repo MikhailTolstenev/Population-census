@@ -31,7 +31,8 @@ public class Main {
 
         List<Person> personWorkable = persons.stream()
                 .filter(x -> x.getEducation() == Education.HIGHER || x.getEducation() == Education.FURTHER)
-                .filter(x -> x.getAge() < 65 && x.getAge() > 20)
+                .filter(x -> x.getAge() > 18)
+                .filter(x->x.getSex() == Sex.MAN ? x.getAge() < 65: x.getAge() < 60)
                 .sorted(Comparator.comparing(Person::getFamily))
                 .collect(Collectors.toList());
         System.out.println(personWorkable);
